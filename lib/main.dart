@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pregnancy_tube/home.dart';
+import 'package:pregnancy_tube/models/all_model.dart';
+import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
 

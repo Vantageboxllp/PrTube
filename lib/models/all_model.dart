@@ -2,6 +2,7 @@
 //
 //     final catData = catDataFromJson(jsonString);
 
+import 'package:flutter/cupertino.dart';
 import 'package:meta/meta.dart';
 import 'dart:convert';
 
@@ -9,16 +10,18 @@ List<CatData> catDataFromJson(String str) => List<CatData>.from(json.decode(str)
 
 String catDataToJson(List<CatData> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class CatData {
+class CatData with ChangeNotifier{
     CatData({
         @required this.id,
         @required this.name,
         @required this.videos,
+        bool watched
     });
 
     final String id;
     final String name;
     final List<Video> videos;
+    bool watched=true;
 
     factory CatData.fromJson(Map<String, dynamic> json) => CatData(
         id: json["id"],
@@ -31,6 +34,10 @@ class CatData {
         "name": name,
         "videos": List<dynamic>.from(videos.map((x) => x.toJson())),
     };
+    void togglefavoriteStatus(){
+        watched= !watched;
+        notifyListeners();
+    }
 }
 
 class Video {
@@ -51,4 +58,5 @@ class Video {
         "Title": title,
         "url": url,
     };
+
 }

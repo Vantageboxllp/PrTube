@@ -30,10 +30,10 @@ class _Catwise_vid_listState extends State<Catwise_vid_list> {
             child: Text(
               widget.catData.name,
               softWrap: true,
-              style:TextStyle(
+              style:GoogleFonts.robotoCondensed(
                 fontSize: 16,
                 color: Colors.white,
-                fontWeight: FontWeight.w900,
+                fontWeight: FontWeight.w600,
               ),
             ),
           ),
