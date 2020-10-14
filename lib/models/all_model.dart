@@ -11,6 +11,8 @@ List<CatData> catDataFromJson(String str) => List<CatData>.from(json.decode(str)
 String catDataToJson(List<CatData> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class CatData with ChangeNotifier{
+
+
     CatData({
         @required this.id,
         @required this.name,
@@ -20,8 +22,8 @@ class CatData with ChangeNotifier{
 
     final String id;
     final String name;
-    final List<Video> videos;
-    bool watched=true;
+     List<Video> videos;
+    bool watched=false;
 
     factory CatData.fromJson(Map<String, dynamic> json) => CatData(
         id: json["id"],
@@ -40,7 +42,7 @@ class CatData with ChangeNotifier{
     }
 }
 
-class Video {
+class Video  {
     Video({
         @required this.title,
         @required this.url,

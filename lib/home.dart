@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pregnancy_tube/catwise_vid_list.dart';
+
 import './models/all_model.dart';
 import 'service_getdata.dart';
 
@@ -31,6 +32,9 @@ _loading = false;
 
   @override
   Widget build(BuildContext context) {
+
+    //var data=dataProvider.name;
+    //print(user.name.toString());
     double dh = MediaQuery.of(context).size.height;
 
     return Column(
