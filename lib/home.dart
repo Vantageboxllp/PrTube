@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pregnancy_tube/catwise_vid_list.dart';
+import 'package:pregnancy_tube/widget_home_slider.dart';
 import './models/all_model.dart';
 import 'service_getdata.dart';
 
@@ -11,11 +12,10 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  List<CatData> _catData;
+  bool _loading;
 
-List<CatData> _catData;
-bool _loading;
-
-@override
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -23,9 +23,8 @@ bool _loading;
     Services.getData().then((catData) {
       setState(() {
         _catData = catData;
-_loading = false;
+        _loading = false;
       });
-
     });
   }
 
@@ -33,25 +32,94 @@ _loading = false;
   Widget build(BuildContext context) {
     double dh = MediaQuery.of(context).size.height;
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    return Stack(
       children: [
+        
+        CustomScrollView(slivers: <Widget>[
+          SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                HomeSlider(),
+              ],
+            ),
+          ),
+          SliverList(
+              delegate: SliverChildBuilderDelegate(
+            (BuildContext context, index) {
+              CatData catData = _catData[index];
+
+              return Container(
+                 decoration: BoxDecoration(
+    //                             border: Border.all(
+    //   //color: Colors.blueGrey[800],
+    // ),
+    borderRadius: BorderRadius.all(Radius.circular(10)),
+  
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      Colors.blueGrey[700],
+                                      Colors.blueGrey[900],
+                                    ])
+                                ),
+               // color: Colors.blueGrey[900],
+                 // color: Color.fromRGBO(17, 23, 30, 1),
+                  //height: dh*0.9,
+
+                  child: Catwise_vid_list(catData));
+            },
+            childCount: null == _catData ? 0 : _catData.length,
+          )),
+        ]),
         Container(
-          color: Colors.black,
-         height: dh*0.9,
-
-           child: ListView.builder(
-             scrollDirection: Axis.vertical,
-             itemCount: null == _catData ? 0 : _catData.length,
-             itemBuilder:(context, index) {
-               CatData catData = _catData[index];
-              //return Text("data                             ");
-               return Catwise_vid_list(catData);
-
-             },
-             )
-        ),
+          //color: Color.fromRGBO(53,53,53,.9),
+          width: double.infinity,
+          padding: EdgeInsets.all(6),
+          child: Text(""),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [
+              Colors.blueGrey[900],
+              Colors.blueGrey[900].withOpacity(.2),
+              //Color.fromRGBO(53,53,53,1),
+              //Color.fromRGBO(53,53,53,.4),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter
+            )
+          ),
+          ),
       ],
     );
+    // return SingleChildScrollView(
+    //       child: Column(
+    //         mainAxisSize: MainAxisSize.min,
+    //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    //     children: [
+
+    //       HomeSlider(),
+    //       Container(child: Text("data"),),
+    //       Container(
+
+    //         color: Colors.black,
+    //        height: dh*0.9,
+
+    //          child: ListView.builder(
+
+    //           physics: NeverScrollableScrollPhysics(),
+    //           // scrollDirection: Axis.vertical,
+    //           shrinkWrap: true,
+    //            itemCount: null == _catData ? 0 : _catData.length,
+    //            itemBuilder:(context, index) {
+    //              CatData catData = _catData[index];
+    //             //return Text("data                             ");
+    //              return Catwise_vid_list(catData);
+
+    //            },
+    //            )
+    //       ),
+    //     ],
+    //   ),
+    // );
   }
 }

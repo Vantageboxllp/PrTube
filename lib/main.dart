@@ -1,22 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:pregnancy_tube/home.dart';
+import 'package:pregnancy_tube/test.dart';
+import 'package:flutter/services.dart';
+
  
-void main() => runApp(MyApp());
+void main() {
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    systemNavigationBarColor: Colors.blueGrey[900], // navigation bar color
+    statusBarColor: Colors.blueGrey[900], // status bar color
+  ));
+  runApp(MyApp());
+} 
  
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Material App',
+      title: 'Pregnancy Video Tips',
+      theme: ThemeData.dark(),
       home: SafeArea(
               child: Scaffold(
           appBar: AppBar(
             elevation: 0,
-            backgroundColor: Colors.black,
-            title: Text('Pregnancy Tube!'),
+            backgroundColor: Colors.blueGrey[900],
+            //backgroundColor: Color.fromRGBO(53,53,53,1),
+            title: Text('Mom\'s Doctor!!'),
             leading: Icon(Icons.menu),
           ),
-          body: SingleChildScrollView(child: Home()),
+          body: Home(),
         ),
       ),
     );
