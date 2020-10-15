@@ -37,7 +37,7 @@ class _Catwise_vid_listState extends State<Catwise_vid_list> {
         Container(
           
           margin: const EdgeInsets.fromLTRB(8, 0, 8, 14),
-          color: Colors.blueGrey[900],
+          color: Colors.transparent,
           height: MediaQuery.of(context).size.width * 0.24,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,

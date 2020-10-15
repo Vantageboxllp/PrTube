@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Pregnancy Video Tips',
+      title: 'Pregnancy',
       theme: ThemeData.dark(),
       home: SafeArea(
               child: Scaffold(
@@ -23,8 +23,8 @@ class MyApp extends StatelessWidget {
             elevation: 0,
             backgroundColor: Colors.blueGrey[900],
             //backgroundColor: Color.fromRGBO(53,53,53,1),
-            title: Text('Mom\'s Doctor!!'),
-            leading: Icon(Icons.menu),
+            title: Center(child: Text('Best Pregnancy Videos!!')),
+            //leading: Icon(Icons.menu),
           ),
           body: Home(),
         ),
