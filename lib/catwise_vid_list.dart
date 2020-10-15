@@ -1,10 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:pregnancy_tube/nav1.dart';
-import 'package:pregnancy_tube/video_page.dart';
+import 'video_page.dart';
 import './models/all_model.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-import 'test.dart';
 
 class Catwise_vid_list extends StatefulWidget {
   final CatData catData;

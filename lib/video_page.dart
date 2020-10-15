@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pregnancy_tube/models/all_model.dart';
+import './models/all_model.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class video_page extends StatefulWidget {

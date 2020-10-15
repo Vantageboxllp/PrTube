@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pregnancy_tube/catwise_vid_list.dart';
-import 'package:pregnancy_tube/widget_home_slider.dart';
+import 'catwise_vid_list.dart';
+import 'widget_home_slider.dart';
 import './models/all_model.dart';
 import 'service_getdata.dart';
 
