@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'catwise_vid_list.dart';
 import 'widget_home_slider.dart';
 import './models/all_model.dart';
 import 'service_getdata.dart';
+import 'nav1.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -30,6 +32,8 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    /*SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown,DeviceOrientation.portraitUp]
+        );*/
     double dh = MediaQuery.of(context).size.height;
 
     return Stack(
@@ -39,7 +43,7 @@ class _HomeState extends State<Home> {
           SliverList(
             delegate: SliverChildListDelegate(
               [
-                HomeSlider(),
+                HomeSlider1(),
               ],
             ),
           ),
@@ -53,7 +57,7 @@ class _HomeState extends State<Home> {
     //                             border: Border.all(
     //   //color: Colors.blueGrey[800],
     // ),
-    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
   
                                   gradient: LinearGradient(
                                     begin: Alignment.topCenter,

@@ -1,67 +1,98 @@
 import 'package:flutter/material.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-import './models/all_model.dart';
+import 'package:page_view_indicator/page_view_indicator.dart';
 
-class HomePage extends StatefulWidget {
+class HomeSlider1 extends StatefulWidget {
+  const HomeSlider1({Key key}) : super(key: key);
 
-  final int video_id;
-  final  String cat_id;
-   final CatData catData;
-
-  HomePage(this.video_id, this.cat_id, this.catData);
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomeSliderState createState() => _HomeSliderState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomeSliderState extends State<HomeSlider1> {
+  static const length = 3;
+  final pageIndexNotifier = ValueNotifier<int>(0);
+  static List<String> imgList = [
+    'images/pic1.png',
+    'images/pic2.png',
+    'images/pic3.png',
+    'images/pic4.jpg',
+  ];
 
-  
-
-
-  String videoURL = "https://www.youtube.com/watch?v=n8X9_MgEdCg";
-
-  YoutubePlayerController _controller;
-
-  @override
-  void initState() {
-    
-    _controller = YoutubePlayerController(
-      initialVideoId: YoutubePlayer.convertUrlToId(videoURL)
-    );
-
-    super.initState();
-  }
-
+  int _current = 0;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Youtube Player"),
-      ),
-      body: Container(
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
+    double containerHeight = MediaQuery
+        .of(context)
+        .size
+        .height;
+    return Stack(
+      children: <Widget>[
+        Container(
+          height: containerHeight * 0.30,
+          width: MediaQuery
+              .of(context)
+              .size
+              .width,
+          padding: EdgeInsets.only(top: 20),
+          child: PageView.builder(
 
-              YoutubePlayerBuilder(
-                              player: YoutubePlayer(
-                  controller: _controller,
-                  showVideoProgressIndicator: true,
-                ),
-                builder: (context,player){
-                  return Column(
-                    children: [
-                      player,
-                    ],
-                  );
-                },
-              ),
+            onPageChanged: (index) => pageIndexNotifier.value = index,
+            
+            itemCount: imgList.length,
+            itemBuilder: (context, index) {
+              return Stack(
+                children: <Widget>[
+                  SizedBox(
+                    height: containerHeight * 0.30,
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width,
+                    child: Card(
+                        elevation: 5,
+                        child: Image.asset(imgList[index],fit: BoxFit.fill,)
+                    ),
+                  ),
 
-            ],
+
+                ],
+              );
+
+            },
           ),
+
         ),
-      ),
+        Padding(
+          padding: EdgeInsets.only(top:175,left: 100,right: 100),
+          child: _buildExample1(),
+        )
+
+      ],
+
+    );
+  }
+
+  PageViewIndicator _buildExample1() {
+    return PageViewIndicator(
+      pageIndexNotifier: pageIndexNotifier,
+      length: imgList.length,
+      normalBuilder: (animationController, index) =>
+          Circle(
+            size: 8.0,
+            color: Colors.blueGrey[900],
+          ),
+      highlightedBuilder: (animationController, index) =>
+          ScaleTransition(
+            scale: CurvedAnimation(
+              parent: animationController,
+              curve: Curves.bounceIn,
+            ),
+            child: Circle(
+              size: 12.0,
+              color: Colors.white,
+            ),
+          ),
     );
   }
 }
