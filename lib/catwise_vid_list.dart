@@ -1,8 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'video_page.dart';
-import './models/all_model.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
+import './models/all_model.dart';
+import 'video_page.dart';
 
 class Catwise_vid_list extends StatefulWidget {
   final CatData catData;
@@ -16,7 +17,6 @@ class Catwise_vid_list extends StatefulWidget {
 class _Catwise_vid_listState extends State<Catwise_vid_list> {
   String id;
   bool isSelected = false;
- 
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,6 @@ class _Catwise_vid_listState extends State<Catwise_vid_list> {
           ),
         ),
         Container(
-          
           margin: const EdgeInsets.fromLTRB(8, 0, 8, 14),
           color: Colors.blueGrey[900],
           height: MediaQuery.of(context).size.width * 0.24,
@@ -45,9 +44,9 @@ class _Catwise_vid_listState extends State<Catwise_vid_list> {
             // shrinkWrap: true,
             itemCount: widget.catData.videos.length,
             itemBuilder: (context, index) {
-             
-              id = YoutubePlayer.convertUrlToId(widget.catData.videos[index].url)
-                  .toString();
+              id =
+                  YoutubePlayer.convertUrlToId(widget.catData.videos[index].url)
+                      .toString();
               return FittedBox(
                 fit: BoxFit.cover,
                 child: Column(
@@ -63,7 +62,7 @@ class _Catwise_vid_listState extends State<Catwise_vid_list> {
                           child: new AnimatedOpacity(
                             opacity: 1,
                             duration: Duration(milliseconds: 200),
-                                                      child: Stack(
+                            child: Stack(
                               children: [
                                 CachedNetworkImage(
                                   imageUrl:
@@ -81,19 +80,21 @@ class _Catwise_vid_listState extends State<Catwise_vid_list> {
                                   child: InkWell(
                                     splashColor: Colors.black,
                                     onTap: () {
-   setState(() {
-           
-          });
+                                      setState(() {});
                                       Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => video_page(index,widget.catData.id,widget.catData)),
-            );
-                    //                 var cat=catData.id;
-                    // var vid=index;
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => video_player(index,cat,catData)),
-                    // );
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => video_page(
+                                                index,
+                                                widget.catData.id,
+                                                widget.catData)),
+                                      );
+                                      //                 var cat=catData.id;
+                                      // var vid=index;
+                                      // Navigator.push(
+                                      //   context,
+                                      //   MaterialPageRoute(builder: (context) => video_player(index,cat,catData)),
+                                      // );
                                     },
                                   ),
                                 ))
