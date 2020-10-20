@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'catwise_vid_list.dart';
-import 'widget_home_slider.dart';
 import './models/all_model.dart';
 import 'service_getdata.dart';
+import './models/slider_model.dart';
+import 'widget_home_slider.dart';
+
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -13,6 +15,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List<CatData> _catData;
+  List<SliderModel> _slidermodel;
   bool _loading;
 
   @override
@@ -20,13 +23,24 @@ class _HomeState extends State<Home> {
     // TODO: implement initState
     super.initState();
     _loading = true;
+    print('init state in home');
     Services.getData().then((catData) {
       setState(() {
         _catData = catData;
         _loading = false;
       });
     });
+ Services.get_sliderimages().then((sliderimage) {
+      setState(() {
+        _slidermodel = sliderimage;
+      });
+    });
+
+
+
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +53,19 @@ class _HomeState extends State<Home> {
           SliverList(
             delegate: SliverChildListDelegate(
               [
-                HomeSlider(),
+              //  HomeSlider(),
+FutureBuilder(
+                  future: Services.get_sliderimages(),
+                    builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                      if (snapshot.connectionState == ConnectionState.done && snapshot.hasData && snapshot.data != null) {
+                        return HomeSlider1(snapshot.data,_catData);
+                      }
+                      return Container();
+                    },
+                   // child: HomeSlider1(_slidermodel)
+                   )
+
+
               ],
             ),
           ),

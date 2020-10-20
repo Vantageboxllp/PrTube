@@ -100,8 +100,16 @@ class _video_pageState extends State<video_page> {
 
     return YoutubePlayerBuilder(
         onExitFullScreen: () {
-          // The player forces portraitUp after exiting fullscreen. This overrides the behaviour.
+
+          SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+        Future.delayed(const Duration(seconds: 1), () {
+          _controller.play();
+        });
+        Future.delayed(const Duration(seconds: 3), () {
           SystemChrome.setPreferredOrientations(DeviceOrientation.values);
+        });
+          // The player forces portraitUp after exiting fullscreen. This overrides the behaviour.
+          //SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,DeviceOrientation.portraitDown,Devi]);
 
           //_controller.seekTo(_controller.value.position);
 
@@ -109,11 +117,15 @@ class _video_pageState extends State<video_page> {
         },
         onEnterFullScreen: () {
           //_isPlayerReady=true;
+          SystemChrome.setPreferredOrientations([
+          DeviceOrientation.landscapeLeft,
+          DeviceOrientation.landscapeRight,
+        ]);
 
-          SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft,DeviceOrientation.landscapeRight]);
+          //SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft,DeviceOrientation.landscapeRight]);
 
           //_controller.seekTo(_controller.value.position);
-          //print(_controller.value.position);
+          print(_controller.value.position);
 
           //_controller.play();
 
