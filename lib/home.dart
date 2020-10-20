@@ -18,7 +18,7 @@ class _HomeState extends State<Home> {
   List<CatData> _catData;
   List<SliderModel> _slidermodel;
   bool _loading;
-
+  //CatData catData;
   @override
   void initState() {
     // TODO: implement initState
@@ -52,7 +52,7 @@ class _HomeState extends State<Home> {
                   future: Services.get_sliderimages("slider_images.json"),
                     builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                       if (snapshot.connectionState == ConnectionState.done && snapshot.hasData && snapshot.data != null) {
-                        return HomeSlider1(snapshot.data);
+                        return HomeSlider1(snapshot.data,_catData);
                       }
                       return Container();
                     },
@@ -64,7 +64,7 @@ class _HomeState extends State<Home> {
           SliverList(
               delegate: SliverChildBuilderDelegate(
             (BuildContext context, index) {
-              CatData catData = _catData[index];
+               CatData catData = _catData[index];
 
               return Container(
                   decoration: BoxDecoration(

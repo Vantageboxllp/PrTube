@@ -1,12 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:page_view_indicator/page_view_indicator.dart';
+import 'package:pregnancy_tube/category_wise_video.dart';
+import 'package:pregnancy_tube/models/all_model.dart';
 import 'package:pregnancy_tube/models/slider_model.dart';
+import 'package:pregnancy_tube/video_page.dart';
 
 class HomeSlider1 extends StatefulWidget {
   final List<SliderModel> _slidermodel;
+ final List<CatData> _catData;
 
-  HomeSlider1(this._slidermodel);
+  HomeSlider1(this._slidermodel,this._catData);
 
   @override
   _HomeSliderState createState() => _HomeSliderState();
@@ -24,7 +28,7 @@ class _HomeSliderState extends State<HomeSlider1> {
   }
 
   //static const length = 3;
-  final pageIndexNotifier = ValueNotifier<int>(1);
+  final pageIndexNotifier = ValueNotifier<int>(0);
   static List<String> imgList = [
     'images/pic1.png',
     'images/pic2.png',
@@ -56,7 +60,15 @@ double container_width= MediaQuery.of(context).size.width;
                         clipBehavior: Clip.antiAlias,
                         child: InkWell(
                           onTap: () {
-                            print(index);
+                            print(widget._slidermodel[index].catId.toString());
+                            print(widget._catData[index].id.toString());
+                            //video_page(0,widget._slidermodel[index],widget._catData);
+                            var selected_cat=int.parse(widget._slidermodel[index].catId);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => category_wise_video(selected_cat, widget._catData)),
+                            );
                           },
                           child: CachedNetworkImage(
                             imageUrl:

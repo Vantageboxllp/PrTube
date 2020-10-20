@@ -15,6 +15,7 @@ class video_page extends StatefulWidget {
 //print("$catData")
   video_page(this.id, this.cat, this.catData);
 
+
   @override
   _video_pageState createState() => _video_pageState();
 }
@@ -101,27 +102,29 @@ class _video_pageState extends State<video_page> {
 
     return YoutubePlayerBuilder(
         onExitFullScreen: () {
-          // The player forces portraitUp after exiting fullscreen. This overrides the behaviour.
-          SystemChrome.setPreferredOrientations(DeviceOrientation.values);
 
-          //_controller.seekTo(_controller.value.position);
+          SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+          Future.delayed(const Duration(seconds: 1), () {
+            _controller.play();
+          });
+          Future.delayed(const Duration(seconds: 5), () {
+            SystemChrome.setPreferredOrientations(DeviceOrientation.values);
+          });
 
-          _controller.play();
+
         },
         onEnterFullScreen: () {
           //_isPlayerReady=true;
 
           SystemChrome.setPreferredOrientations([
-
             DeviceOrientation.landscapeLeft,
             DeviceOrientation.landscapeRight,
-            DeviceOrientation.portraitDown,
-            DeviceOrientation.portraitUp
           ]);
           //_controller.play();
         },
         player: YoutubePlayer(
           controller: _controller,
+          width: container_width,
 
           showVideoProgressIndicator: true,
           progressIndicatorColor: Colors.blueAccent,
@@ -157,6 +160,7 @@ class _video_pageState extends State<video_page> {
             setState(() {});
 
           },
+
         ),
         builder: (ctx, player) => Scaffold(
               appBar: appbar,
@@ -164,7 +168,10 @@ class _video_pageState extends State<video_page> {
               backgroundColor: Colors.blueGrey[900],
               body: Column(
                 children: <Widget>[
-                  Container(child: player),
+
+                  Container(
+
+                      child: player),
                   Container(
                     margin: EdgeInsets.fromLTRB(4, 10, 4, 10),
                     color: Colors.blueGrey[900],
@@ -195,9 +202,6 @@ class _video_pageState extends State<video_page> {
                                 margin: EdgeInsets.symmetric(
                                     horizontal: 8, vertical: 5),
                                 decoration: BoxDecoration(
-                                    //                             border: Border.all(
-                                    //   //color: Colors.blueGrey[800],
-                                    // ),
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10)),
                                     gradient: LinearGradient(
@@ -215,19 +219,6 @@ class _video_pageState extends State<video_page> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: <Widget>[
-                                      /* IconButton(
-                                  icon: Icon(
-                                    widget.catData.watched
-                                        ? Icons.check_circle
-                                        : null,
-                                  ),
-                                  color:
-                                  Theme.of(context).accentColor,
-                                  onPressed: () {
-                                    widget.catData
-                                        .togglefavoriteStatus();
-                                  },
-                                    ),*/
                                       Expanded(
                                         flex: 2,
                                         child: ClipRRect(
@@ -270,15 +261,7 @@ class _video_pageState extends State<video_page> {
                                                   ),
                                                 ),
                                               ),
-                                              // CircleAvatar(
-                                              //   backgroundColor: Colors.lightBlue,
-                                              //   child: Text('\#$item_no',
-                                              //   style: TextStyle(
-                                              //     color: Colors.white,
-                                              //     fontWeight: FontWeight.w600
-                                              //   ),
-                                              //   ),
-                                              // ),
+
                                             ],
                                           ),
                                         ),

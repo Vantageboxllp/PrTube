@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import './models/all_model.dart';
@@ -20,6 +21,7 @@ class _Catwise_vid_listState extends State<Catwise_vid_list> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(DeviceOrientation.values);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
