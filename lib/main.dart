@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
             elevation: 0,
             backgroundColor: Colors.blueGrey[900],
             //backgroundColor: Color.fromRGBO(53,53,53,1),
-            title: Center(child: Text('Best Pregnancy Videos!!')),
+            title: Center(child: Text('Best Pregnancy Video Tips!!')),
             //leading: Icon(Icons.menu),
           ),
           body: Home(),

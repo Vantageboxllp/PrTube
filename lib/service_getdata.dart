@@ -4,11 +4,11 @@ import 'models/slider_model.dart';
 
 
 class Services {
+// static const String mainurl ='https://raw.githubusercontent.com/Vantageboxllp/boyapi/master/datas.json';
+// static const String slider_url = 'https://raw.githubusercontent.com/Vantageboxllp/boyapi/master/slider_images.json';
 
- // static const String url ='https://raw.githubusercontent.com/Vantageboxllp/boyapi/master/datas.json';
-
- static const String mainurl ='https://raw.githubusercontent.com/Vantageboxllp/boyapi/master/datas.json';
- static const String slider_url = 'https://raw.githubusercontent.com/Vantageboxllp/boyapi/master/slider_images.json';
+static const String mainurl ='http://api.momsdoctor.com/maindata';
+static const String slider_url = 'http://api.momsdoctor.com/catdata';
   
   static Future<List<CatData>> getData() async {
     try {

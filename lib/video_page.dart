@@ -106,7 +106,8 @@ class _video_pageState extends State<video_page> {
           _controller.play();
         });
         Future.delayed(const Duration(seconds: 3), () {
-          SystemChrome.setPreferredOrientations(DeviceOrientation.values);
+          WidgetsFlutterBinding.ensureInitialized();
+          SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft,DeviceOrientation.landscapeRight,DeviceOrientation.portraitUp]);
         });
           // The player forces portraitUp after exiting fullscreen. This overrides the behaviour.
           //SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,DeviceOrientation.portraitDown,Devi]);
@@ -117,6 +118,8 @@ class _video_pageState extends State<video_page> {
         },
         onEnterFullScreen: () {
           //_isPlayerReady=true;
+          WidgetsFlutterBinding.ensureInitialized();
+
           SystemChrome.setPreferredOrientations([
           DeviceOrientation.landscapeLeft,
           DeviceOrientation.landscapeRight,
@@ -137,28 +140,28 @@ class _video_pageState extends State<video_page> {
           showVideoProgressIndicator: true,
           progressIndicatorColor: Colors.blueAccent,
           //width: 100,
-          topActions: <Widget>[
-            const SizedBox(width: 8.0),
-            Text(
-              _controller.metadata.title,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 18.0,
-              ),
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
-            ),
-            IconButton(
-              icon: const Icon(
-                Icons.settings,
-                color: Colors.white,
-                size: 25.0,
-              ),
-              onPressed: () {
-                //log('Settings Tapped!');
-              },
-            ),
-          ],
+          // topActions: <Widget>[
+          //   const SizedBox(width: 8.0),
+          //   Text(
+          //     _controller.metadata.title,
+          //     style: const TextStyle(
+          //       color: Colors.white,
+          //       fontSize: 18.0,
+          //     ),
+          //     overflow: TextOverflow.ellipsis,
+          //     maxLines: 1,
+          //   ),
+          //   IconButton(
+          //     icon: const Icon(
+          //       Icons.settings,
+          //       color: Colors.white,
+          //       size: 25.0,
+          //     ),
+          //     onPressed: () {
+          //       //log('Settings Tapped!');
+          //     },
+          //   ),
+          // ],
           onReady: () {
             _isPlayerReady = true;
             //_controller.addListener(listener);
