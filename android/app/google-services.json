@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "649652608049",
+    "firebase_url": "https://pregnancytube-927ca.firebaseio.com",
+    "project_id": "pregnancytube-927ca",
+    "storage_bucket": "pregnancytube-927ca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:649652608049:android:9b3075da1749a044164910",
+        "android_client_info": {
+          "package_name": "com.example.pregnancy_tube"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "649652608049-cblk5epifap4c0a6rhi6qgq3q4udqf4n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJKrzJ0vKPFLMB3m5VyMXj4kOSrpHtgps"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "649652608049-cblk5epifap4c0a6rhi6qgq3q4udqf4n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:649652608049:android:8aea1aa0885d7567164910",
+        "android_client_info": {
+          "package_name": "com.momsdoctor.pregnancy_tube"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "649652608049-cblk5epifap4c0a6rhi6qgq3q4udqf4n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJKrzJ0vKPFLMB3m5VyMXj4kOSrpHtgps"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "649652608049-cblk5epifap4c0a6rhi6qgq3q4udqf4n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
