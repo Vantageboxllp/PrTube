@@ -1,11 +1,20 @@
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'video_page.dart';
-import './models/all_model.dart';
+import 'package:flutter/services.dart';
+import 'package:rate_my_app/rate_my_app.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
+import './models/all_model.dart';
+import 'video_page.dart';
 
 class Catwise_vid_list extends StatefulWidget {
   final CatData catData;
+
+  //final bool rating_flag;
 
   Catwise_vid_list(this.catData);
 
@@ -16,7 +25,14 @@ class Catwise_vid_list extends StatefulWidget {
 class _Catwise_vid_listState extends State<Catwise_vid_list> {
   String id;
   bool isSelected = false;
- 
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    //RatingMethod();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +51,6 @@ class _Catwise_vid_listState extends State<Catwise_vid_list> {
           ),
         ),
         Container(
-          
           margin: const EdgeInsets.fromLTRB(8, 0, 8, 14),
           color: Colors.transparent,
           height: MediaQuery.of(context).size.width * 0.24,
@@ -45,9 +60,9 @@ class _Catwise_vid_listState extends State<Catwise_vid_list> {
             // shrinkWrap: true,
             itemCount: widget.catData.videos.length,
             itemBuilder: (context, index) {
-             
-              id = YoutubePlayer.convertUrlToId(widget.catData.videos[index].url)
-                  .toString();
+              id =
+                  YoutubePlayer.convertUrlToId(widget.catData.videos[index].url)
+                      .toString();
               return FittedBox(
                 fit: BoxFit.cover,
                 child: Column(
@@ -63,7 +78,7 @@ class _Catwise_vid_listState extends State<Catwise_vid_list> {
                           child: new AnimatedOpacity(
                             opacity: 1,
                             duration: Duration(milliseconds: 200),
-                                                      child: Stack(
+                            child: Stack(
                               children: [
                                 CachedNetworkImage(
                                   imageUrl:
@@ -77,23 +92,27 @@ class _Catwise_vid_listState extends State<Catwise_vid_list> {
                                 ),
                                 Positioned.fill(
                                     child: Material(
+
                                   color: Colors.transparent,
                                   child: InkWell(
                                     splashColor: Colors.black,
                                     onTap: () {
-   setState(() {
-           
-          });
+
                                       Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => video_page(index,widget.catData.id,widget.catData)),
-            );
-                    //                 var cat=catData.id;
-                    // var vid=index;
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => video_player(index,cat,catData)),
-                    // );
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => video_page(
+                                                index,
+                                                widget.catData.id,
+                                                widget.catData)),
+                                      );
+                                      //print(r.toString());
+                                      //                 var cat=catData.id;
+                                      // var vid=index;
+                                      // Navigator.push(
+                                      //   context,
+                                      //   MaterialPageRoute(builder: (context) => video_player(index,cat,catData)),
+                                      // );
                                     },
                                   ),
                                 ))
@@ -110,4 +129,5 @@ class _Catwise_vid_listState extends State<Catwise_vid_list> {
       ],
     );
   }
+
 }

@@ -2,17 +2,15 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:page_view_indicator/page_view_indicator.dart';
 import 'package:pregnancy_tube/models/all_model.dart';
+
 import 'models/slider_model.dart';
 import 'video_page.dart';
 
 class HomeSlider1 extends StatefulWidget {
   final List<SliderModel> _slidermodel;
- List<CatData> _catData;
+  List<CatData> _catData;
 
-  
-
-  HomeSlider1(this._slidermodel,this._catData);
-  
+  HomeSlider1(this._slidermodel, this._catData);
 
   @override
   _HomeSliderState createState() => _HomeSliderState();
@@ -21,21 +19,18 @@ class HomeSlider1 extends StatefulWidget {
 class _HomeSliderState extends State<HomeSlider1> {
   SliderModel slider;
 
-
   @override
   void initState() {
     // TODO: implement initState
-  
   }
 
   //static const length = 3;
   final pageIndexNotifier = ValueNotifier<int>(1);
 
-
   @override
   Widget build(BuildContext context) {
     double containerHeight = MediaQuery.of(context).size.height;
-double container_width= MediaQuery.of(context).size.width;
+    double container_width = MediaQuery.of(context).size.width;
     return Stack(
       children: <Widget>[
         Container(
@@ -60,16 +55,18 @@ double container_width= MediaQuery.of(context).size.width;
                             print(widget._slidermodel[index].imageUrl);
 
                             Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => video_page(0,"sd",widget._catData[int.parse(widget._slidermodel[index].catId)])),
-            );
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => video_page(
+                                      0,
+                                      "sd",
+                                      widget._catData[int.parse(
+                                          widget._slidermodel[index].catId)])),
+                            );
                           },
-                           
                           child: CachedNetworkImage(
-                            imageUrl:
-                            widget._slidermodel[index].imageUrl,
+                            imageUrl: widget._slidermodel[index].imageUrl,
                             fit: BoxFit.fill,
-                            
                           ),
                         )),
                   ),
@@ -79,7 +76,8 @@ double container_width= MediaQuery.of(context).size.width;
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(top: containerHeight*0.269, left: 100, right: 100),
+          padding: EdgeInsets.only(
+              top: containerHeight * 0.269, left: 100, right: 100),
           child: _buildExample1(),
         )
       ],
