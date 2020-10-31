@@ -7,6 +7,7 @@ import 'service_getdata.dart';
 import './models/slider_model.dart';
 import 'widget_home_slider.dart';
 
+
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
 
@@ -75,7 +76,7 @@ class _HomeState extends State<Home> {
                       context, RateMyAppDialogButton.rate);
                   if (stars >= 3) {
                     LaunchReview.launch(
-                        androidAppId: "com.momsdoctor.pregnancy_tube");
+                        androidAppId:"com.momsdoctor.pregnancy_tube");
                   }
                 },
               ),
@@ -100,7 +101,6 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     double dh = MediaQuery.of(context).size.height;
-
     return Stack(
       children: [
         CustomScrollView(slivers: <Widget>[

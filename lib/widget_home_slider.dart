@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:page_view_indicator/page_view_indicator.dart';
+
 import 'package:pregnancy_tube/models/all_model.dart';
 import 'models/slider_model.dart';
 import 'video_page.dart';

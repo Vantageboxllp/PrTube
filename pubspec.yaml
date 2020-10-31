@@ -25,10 +25,10 @@ dependencies:
     sdk: flutter
   http: ^0.12.2
   youtube_player_flutter: ^7.0.0+7
-  cached_network_image: ^2.3.2+1
+  cached_network_image:
   google_fonts: ^1.1.0
   getwidget: ^1.2.2
-  flutter_launcher_icons: ^0.8.1
+  flutter_launcher_icons:
   page_view_indicator: ^2.0.4
   rate_my_app: ^0.7.2
   launch_review: ^2.0.0

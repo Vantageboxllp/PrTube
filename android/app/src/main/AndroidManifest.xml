@@ -9,7 +9,7 @@
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:label="Pregnancy Week By Week Videos"
-        android:icon="@mipmap/launcher_icon">
+        android:icon="@mipmap/launcher">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
