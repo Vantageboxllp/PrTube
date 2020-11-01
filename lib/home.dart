@@ -22,7 +22,7 @@ class _HomeState extends State<Home> {
   RateMyApp rateMyApp = RateMyApp(
     preferencesPrefix: 'rateMyApp_',
     minDays: 0,
-    minLaunches: 2,
+    minLaunches: 4,
     remindDays: 1,
     remindLaunches: 10,
     googlePlayIdentifier: 'com.momsdoctor.pregnancy_tube',
